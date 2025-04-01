@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: 'Authentication'
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth?autoReconnect=true&createDatabaseIfNotExist=true
+    username: root
+    password: 'admin'
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 3
+      idle-timeout: 10000
+
+
+  jpa:
+    show-sql: true
+    generate-ddl: true #to create tables
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        globally_quoted_identifiers: true #when property name is equal to reserved word uses ''
+
+authentication:
+  jwt:
+    keystore:
+      jks-location: base64:ABCDEFGH
+      password: 123456
+      keypair-alias: auth
