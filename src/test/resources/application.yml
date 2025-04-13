@@ -27,3 +27,6 @@ authentication:
       jks-location: base64:ABCDEFGH
       password: 123456
       keypair-alias: auth
+
+auth:
+  provider-url: http://localhost:8080
