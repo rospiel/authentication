@@ -110,6 +110,49 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GET Revoke Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{basic_auth_password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{basic_auth_user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/oauth2/revoke",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"oauth2",
+						"revoke"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
