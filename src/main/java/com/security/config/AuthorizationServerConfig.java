@@ -1,10 +1,19 @@
 package com.security.config;
 
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
+import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
+import com.nimbusds.jose.jwk.source.JWKSource;
+import com.nimbusds.jose.proc.SecurityContext;
 import com.security.authorizationserver.AuthSecurityProperties;
+import com.security.authorizationserver.JwtKeyStoreProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
@@ -21,6 +30,8 @@ import org.springframework.security.oauth2.server.authorization.config.ProviderS
 import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.io.InputStream;
+import java.security.KeyStore;
 import java.time.Duration;
 import java.util.Arrays;
 
@@ -42,7 +53,8 @@ public class AuthorizationServerConfig {
     }
 
     @Bean
-    public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
+    public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder,
+                                                                 Environment environment) {
 
         RegisteredClient firstClientBackend = RegisteredClient
                 .withId("999")
@@ -53,7 +65,7 @@ public class AuthorizationServerConfig {
                 .scope("READ")
                 .tokenSettings(
                     TokenSettings.builder()
-                        .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
+                        .accessTokenFormat(isOpaqueToken(environment) ? OAuth2TokenFormat.REFERENCE : OAuth2TokenFormat.SELF_CONTAINED)
                         .accessTokenTimeToLive(Duration.ofMinutes(30))
                         .build())
                 .build();
@@ -65,6 +77,26 @@ public class AuthorizationServerConfig {
     public OAuth2AuthorizationService oAuth2AuthorizationService(JdbcOperations jdbcOperations,
                                                                  RegisteredClientRepository registeredClientRepository) {
         return new JdbcOAuth2AuthorizationService(jdbcOperations, registeredClientRepository);
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "auth.opaque-token", havingValue = "false")
+    public JWKSource<SecurityContext> jwkSource(JwtKeyStoreProperties properties) throws Exception {
+        char[] keyStorePass = properties.getPassword().toCharArray();
+        String keypairAlias = properties.getKeypairAlias();
+
+        Resource jksLocation = properties.getJksLocation();
+        InputStream inputStream = jksLocation.getInputStream();
+        KeyStore keyStore = KeyStore.getInstance("JKS");
+        keyStore.load(inputStream, keyStorePass);
+
+        RSAKey rsaKey = RSAKey.load(keyStore, keypairAlias, keyStorePass);
+
+        return new ImmutableJWKSet<>(new JWKSet(rsaKey));
+    }
+
+    private boolean isOpaqueToken(Environment environment) {
+        return Boolean.valueOf(environment.getProperty("auth.opaque-token"));
     }
 
 }

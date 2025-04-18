@@ -8,7 +8,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/auth?autoReconnect=true&createDatabaseIfNotExist=true
     username: root
-    password: 'admin'
+    # SEARCH IN REPOSITORY ARTICLES FOR Auth-environment-vars
+    password: ${DATASOURCE_PASSWORD}
     hikari:
       maximum-pool-size: 5
       minimum-idle: 3
@@ -33,10 +34,12 @@ logging:
 authentication:
   jwt:
     keystore:
-      jks-location: base64:ABCDEFGH
-      password: 123456
-      keypair-alias: algafood
+      # SEARCH IN REPOSITORY ARTICLES FOR Auth-environment-vars
+      jks-location: base64:${KEY_PAIR}
+      password: ${KEY_PAIR_SECRET}
+      keypair-alias: ${KEY_PAIR_ALIAS}
 
 
 auth:
   provider-url: http://localhost:8080
+  opaque-token: false

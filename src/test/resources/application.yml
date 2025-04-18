@@ -24,9 +24,10 @@ spring:
 authentication:
   jwt:
     keystore:
-      jks-location: base64:ABCDEFGH
-      password: 123456
-      keypair-alias: auth
+      jks-location: location
+      password: password
+      keypair-alias: alias
 
 auth:
   provider-url: http://localhost:8080
+  opaque-token: true
