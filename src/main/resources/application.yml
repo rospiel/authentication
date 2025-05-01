@@ -1,0 +1,31 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: Authentication
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth?autoReconnect=true&createDatabaseIfNotExist=true
+    username: root
+    # SEARCH IN REPOSITORY ARTICLES FOR Auth-environment-vars
+    password: ${DATASOURCE_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 3
+      idle-timeout: 10000
+
+  jpa:
+    show-sql: true
+    generate-ddl: true #to create tables
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        globally_quoted_identifiers: true #when property name is equal to reserved word uses ''
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: INFO
