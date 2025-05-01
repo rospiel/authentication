@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "e2cb3c9e-542e-43a2-819b-9a95fa82fc75",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3329989"
+	},
+	"item": [
+		{
+			"name": "Insert User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sara Santos\",\n    \"email\": \"s@s.com\",\n    \"password\": \"123456\",\n    \"groupName\": \"API_BANK_SLIP\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/v1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
