@@ -3,8 +3,7 @@ package com.security.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,10 +16,10 @@ public class Group extends BaseEntity {
 
 	@Column
 	private String name;
-	
-	@ManyToMany
+
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "group_permission", joinColumns = @JoinColumn(name = "group_id"),
 			   inverseJoinColumns = @JoinColumn(name = "permission_id"))
-	private Set<Permission> permissions = new HashSet<>();
+	private List<Permission> permissions;
 	
 }

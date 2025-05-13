@@ -29,3 +29,16 @@ logging:
     org.springframework.web: INFO
     org.springframework.security: TRACE
     org.springframework.security.oauth2: INFO
+
+authentication:
+  jwt:
+    keystore:
+      # SEARCH IN REPOSITORY ARTICLES FOR Auth-environment-vars
+      jks-location: base64:${KEY_PAIR}
+      password: ${KEY_PAIR_SECRET}
+      keypair-alias: ${KEY_PAIR_ALIAS}
+
+
+auth:
+  provider-url: http://localhost:8060
+  opaque-token: false

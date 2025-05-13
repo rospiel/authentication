@@ -19,3 +19,14 @@ spring:
         ddl-auto: none #create tables if not exists when set update
         globally_quoted_identifiers: true #when property name is equal to reserved word uses ''
     defer-datasource-initialization: true
+
+authentication:
+  jwt:
+    keystore:
+      jks-location: location
+      password: password
+      keypair-alias: alias
+
+auth:
+  provider-url: http://localhost:8060
+  opaque-token: false

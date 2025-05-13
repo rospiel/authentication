@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
                             },
                             () -> {
                                 User user = userMapper.toProductEntityBy(request);
-                                user.setGroups(Collections.singleton(group));
+                                user.setGroups(Collections.singletonList(group));
                                 userRepository.save(user);
                             }
                     );
@@ -40,5 +41,10 @@ public class UserServiceImpl implements UserService {
                 }
 
         );
+    }
+
+    @Override
+    public Optional<User> searchBy(String email) {
+        return userRepository.findByEmail(email);
     }
 }

@@ -5,8 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.OffsetDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -30,9 +29,9 @@ public class User extends BaseEntity {
 	@Column
 	private OffsetDateTime dateRegistration;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_group", joinColumns = @JoinColumn(name = "user_id"),
 			   inverseJoinColumns = @JoinColumn(name = "group_id"))
-	private Set<Group> groups = new HashSet<>();
+	private List<Group> groups;
 	
 }
