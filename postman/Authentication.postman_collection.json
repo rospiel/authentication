@@ -7,6 +7,92 @@
 	},
 	"item": [
 		{
+			"name": "GET Revoke Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{basic_auth_password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{basic_auth_user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "token",
+							"value": "eyJ4NXQjUzI1NiI6ImdOaWNDRXBYOF8zM2VXR0RlOWNsWkVRN1FtMWp0dUgtemxyZDRqU25WakkiLCJraWQiOiJhdXRoIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJyQHIuY29tIiwiYXVkIjoickByLmNvbSIsIm5iZiI6MTc0NzE2MzE4NiwidXNlcl9pZCI6MSwic2NvcGUiOlsiUkVBRCJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwNjAiLCJ1c2VyX2Z1bGxuYW1lIjoiUm9kcmlnbyBTYW50b3MiLCJleHAiOjE3NDcxNjQ5ODYsImlhdCI6MTc0NzE2MzE4NiwianRpIjoiNjExZGVhNWEtMTg4My00ZmE3LWFjNTUtNjYxNjA0Mjk3Nzc2IiwiYXV0aG9yaXRpZXMiOlsiQkFOS1NMSVBfUkVBRCIsIkJBTktTTElQX1dSSVRFIl19.sQ5o-6vYtqLG2FoeuUbFhLReiFXUeUxTKpFah_cxZxTJGsxJbdHeFaJ16_J4R-7bngMTSO2mAW4WHo43K6h4nxYhhdjt4JRmJcHhXaQZGrsMBwO-rW-XxduDJXZ7uCw9R4KpExuryIQHEDFWDBG8EAMTBnjO9Joh38Yvb-uyNUSYKkzIMI2bP5bvPOWSSHEr0rLdOj3lLEuxGckofGwqyfEz5t60_9NE66IOx8C9NWIe2Q_aK142-L9Yo_kD9zTPsc8AV3ENMsuAvo4yjmkyh__Gizzedibyo_VnxFcvPFpZGTg10SD1UGNMQXjeJhd8S5pZp4Qa1MwkxrhOpjjkOntC92gPKPn7BkPuXvSdF0mU3ipQ6mWE2XMFq0TssOQYGOz-mwTW07hm8K50P8ZEZiA0SEPokFQlL1nGivxOSNruR3PoVw7GJiafMv5dgqaTokqf36207YlzNGCTnM0Hi8P952ObYR5XTa-NwUXkeAdq2YLKmL_mmaenaxwaxwLG",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/oauth2/revoke",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"oauth2",
+						"revoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Info Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{basic_auth_password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{basic_auth_user}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "token",
+							"value": "eyJ4NXQjUzI1NiI6ImdOaWNDRXBYOF8zM2VXR0RlOWNsWkVRN1FtMWp0dUgtemxyZDRqU25WakkiLCJraWQiOiJhdXRoIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJyQHIuY29tIiwiYXVkIjoickByLmNvbSIsIm5iZiI6MTc0NzE2MzE4NiwidXNlcl9pZCI6MSwic2NvcGUiOlsiUkVBRCJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwNjAiLCJ1c2VyX2Z1bGxuYW1lIjoiUm9kcmlnbyBTYW50b3MiLCJleHAiOjE3NDcxNjQ5ODYsImlhdCI6MTc0NzE2MzE4NiwianRpIjoiNjExZGVhNWEtMTg4My00ZmE3LWFjNTUtNjYxNjA0Mjk3Nzc2IiwiYXV0aG9yaXRpZXMiOlsiQkFOS1NMSVBfUkVBRCIsIkJBTktTTElQX1dSSVRFIl19.sQ5o-6vYtqLG2FoeuUbFhLReiFXUeUxTKpFah_cxZxTJGsxJbdHeFaJ16_J4R-7bngMTSO2mAW4WHo43K6h4nxYhhdjt4JRmJcHhXaQZGrsMBwO-rW-XxduDJXZ7uCw9R4KpExuryIQHEDFWDBG8EAMTBnjO9Joh38Yvb-uyNUSYKkzIMI2bP5bvPOWSSHEr0rLdOj3lLEuxGckofGwqyfEz5t60_9NE66IOx8C9NWIe2Q_aK142-L9Yo_kD9zTPsc8AV3ENMsuAvo4yjmkyh__Gizzedibyo_VnxFcvPFpZGTg10SD1UGNMQXjeJhd8S5pZp4Qa1MwkxrhOpjjkOntC92gPKPn7BkPuXvSdF0mU3ipQ6mWE2XMFq0TssOQYGOz-mwTW07hm8K50P8ZEZiA0SEPokFQlL1nGivxOSNruR3PoVw7GJiafMv5dgqaTokqf36207YlzNGCTnM0Hi8P952ObYR5XTa-NwUXkeAdq2YLKmL_mmaenaxwaxwLG",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/oauth2/introspect",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"oauth2",
+						"introspect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Insert User",
 			"request": {
 				"method": "POST",
@@ -28,6 +114,153 @@
 					"path": [
 						"user",
 						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mail\": \"r@r.com\",\n    \"name\": \"home\",\n    \"secret\": \"123456\",\n    \"scope\": \"READ\",\n    \"duration\": 30\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/customer/v1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"customer",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Automatically get token with code",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessTokenUrl",
+							"value": "{{url}}/oauth2/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{url}}/oauth2/authorize",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "123456",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "r@r.com",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "home",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "eyJ4NXQjUzI1NiI6ImdOaWNDRXBYOF8zM2VXR0RlOWNsWkVRN1FtMWp0dUgtemxyZDRqU25WakkiLCJraWQiOiJhdXRoIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJiQGIuY29tIiwiYXVkIjoiYXV0aC1mcm9udCIsIm5iZiI6MTc0NTI1MzA2MCwic2NvcGUiOlsiUkVBRCJdLCJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MSIsImV4cCI6MTc0NTI1NDg2MCwiaWF0IjoxNzQ1MjUzMDYwfQ.gsf46ufAFko-qnvw6y9KF6IfCJ7EidTdOcjkADgQfFmly7ItORfs5kpsE5k112At7QBDZW_nHn1yefah6sGljhEK-CtRdMVbLIoCaZLviR6L5VYvBTmvfIGMZel8lbrir-P8jH9bfZMyeq7pbiZHakYLa5AANs58TnH1TUgLQyeF9kQQpzqAJR5N7t_3ZsmErsEHMdnn0q0AVnpkNevNlll2q253AoR_8kAvBtssSzn78EUEIQ8YBFkCq51KLBd-kasaHKIvzOSB2I2jTTNxWlL2q1Gv_FjMT1K-2QuVC321yOo2KvKaA8O8hMMighbjVeSZi5PrYIbGtwWdDtDv2fIFBKvvwQtF6ElX25jFYc9j5SV9hkcaSqQn-5m3YjMGYXJ2zoJYvW8KIOGIBVdKV7dZ-rzdQnmNoSLQwvWYzZgTgxECtOK3bIoqshSrKRniRYfEryRBi9pQK35SFqr1C0RD7kCMvg5kTsy5tT2vEkgdv-Ka1_gcSY2ubBp9IGhh",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "READ",
+							"type": "string"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code_with_pkce",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/callback",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ4NXQjUzI1NiI6ImdOaWNDRXBYOF8zM2VXR0RlOWNsWkVRN1FtMWp0dUgtemxyZDRqU25WakkiLCJraWQiOiJhdXRoIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJiQGIuY29tIiwiYXVkIjoiYXV0aC1mcm9udCIsIm5iZiI6MTc0NTI1MzA2MCwic2NvcGUiOlsiUkVBRCJdLCJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MSIsImV4cCI6MTc0NTI1NDg2MCwiaWF0IjoxNzQ1MjUzMDYwfQ.gsf46ufAFko-qnvw6y9KF6IfCJ7EidTdOcjkADgQfFmly7ItORfs5kpsE5k112At7QBDZW_nHn1yefah6sGljhEK-CtRdMVbLIoCaZLviR6L5VYvBTmvfIGMZel8lbrir-P8jH9bfZMyeq7pbiZHakYLa5AANs58TnH1TUgLQyeF9kQQpzqAJR5N7t_3ZsmErsEHMdnn0q0AVnpkNevNlll2q253AoR_8kAvBtssSzn78EUEIQ8YBFkCq51KLBd-kasaHKIvzOSB2I2jTTNxWlL2q1Gv_FjMT1K-2QuVC321yOo2KvKaA8O8hMMighbjVeSZi5PrYIbGtwWdDtDv2fIFBKvvwQtF6ElX25jFYc9j5SV9hkcaSqQn-5m3YjMGYXJ2zoJYvW8KIOGIBVdKV7dZ-rzdQnmNoSLQwvWYzZgTgxECtOK3bIoqshSrKRniRYfEryRBi9pQK35SFqr1C0RD7kCMvg5kTsy5tT2vEkgdv-Ka1_gcSY2ubBp9IGhh",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8060/oauth2/introspect",
+					"host": [
+						"localhost"
+					],
+					"port": "8060",
+					"path": [
+						"oauth2",
+						"introspect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Token CSRF",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/csrf",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"csrf"
 					]
 				}
 			},
