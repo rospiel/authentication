@@ -31,7 +31,7 @@
 					"formdata": [
 						{
 							"key": "token",
-							"value": "eyJ4NXQjUzI1NiI6ImdOaWNDRXBYOF8zM2VXR0RlOWNsWkVRN1FtMWp0dUgtemxyZDRqU25WakkiLCJraWQiOiJhdXRoIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJyQHIuY29tIiwiYXVkIjoickByLmNvbSIsIm5iZiI6MTc0NzE2MzE4NiwidXNlcl9pZCI6MSwic2NvcGUiOlsiUkVBRCJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwNjAiLCJ1c2VyX2Z1bGxuYW1lIjoiUm9kcmlnbyBTYW50b3MiLCJleHAiOjE3NDcxNjQ5ODYsImlhdCI6MTc0NzE2MzE4NiwianRpIjoiNjExZGVhNWEtMTg4My00ZmE3LWFjNTUtNjYxNjA0Mjk3Nzc2IiwiYXV0aG9yaXRpZXMiOlsiQkFOS1NMSVBfUkVBRCIsIkJBTktTTElQX1dSSVRFIl19.sQ5o-6vYtqLG2FoeuUbFhLReiFXUeUxTKpFah_cxZxTJGsxJbdHeFaJ16_J4R-7bngMTSO2mAW4WHo43K6h4nxYhhdjt4JRmJcHhXaQZGrsMBwO-rW-XxduDJXZ7uCw9R4KpExuryIQHEDFWDBG8EAMTBnjO9Joh38Yvb-uyNUSYKkzIMI2bP5bvPOWSSHEr0rLdOj3lLEuxGckofGwqyfEz5t60_9NE66IOx8C9NWIe2Q_aK142-L9Yo_kD9zTPsc8AV3ENMsuAvo4yjmkyh__Gizzedibyo_VnxFcvPFpZGTg10SD1UGNMQXjeJhd8S5pZp4Qa1MwkxrhOpjjkOntC92gPKPn7BkPuXvSdF0mU3ipQ6mWE2XMFq0TssOQYGOz-mwTW07hm8K50P8ZEZiA0SEPokFQlL1nGivxOSNruR3PoVw7GJiafMv5dgqaTokqf36207YlzNGCTnM0Hi8P952ObYR5XTa-NwUXkeAdq2YLKmL_mmaenaxwaxwLG",
+							"value": "eyJ4NXQjUzI1NiI6ImdOaWNDRXBYOF8zM2VXR0RlOWNsWkVRN1FtMWp0dUgtemxyZDRqU25WakkiLCJraWQiOiJhdXRoIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJzQHMyLmNvbSIsImF1ZCI6InJAcjIuY29tIiwibmJmIjoxNzUwODkzMDA3LCJ1c2VyX2lkIjoiNCIsInNjb3BlIjpbIlJFQUQiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDYwIiwidXNlcl9mdWxsbmFtZSI6IlNhcmEgU2FudG9zIDIiLCJleHAiOjE3NTA4OTQ4MDcsImlhdCI6MTc1MDg5MzAwNywianRpIjoiOTdkY2IzNDEtODBlZi00MWNlLTgyZWMtNjVmMTY4NjRlNmMzIiwiYXV0aG9yaXRpZXMiOlsiQkFOS1NMSVBfUkVBRCJdfQ.LZlSZhJE2433OtabAbujol__65Iy2Yny8sw2GHfIEXUqpnR5MtPF0hvyCT_uiZgGSXnDw-Zixja-WlZiQsF_iTH-o6duggYYoFn06w20ctFapgoevqqcfLwFlIJcYdIjYUpx2pKQdq3nj2uc9y8KZlGr-FBXYTX2ROr8AJYtTgJccD9hY2oRndyO7XCqUZC5McaB2kG537ExIhaoXlREQ-fXkusxyCeV9EOwofF6C2Xn-dBqgIMampOzI2nxjpIoFK7w1e56Qxp6fpycBkWj1XBl2X-s-daX2Z_3RPITej6LH290J0oiGdkZRWvpIEwPo2Sn8TcgLAIO3D8NIL3i7ROpCk6jkTmSexoeXWCz4j19kIXlblJAJZ_Dhxj4dq3SL_MFf8rG7NnkXtr4bU5ciuMDdb_LG9xl4G8WeITIAWJzQ3NNqL-iwHET5wiie9NQUsB6DlbPqgBKYXxDxu-ZNL2Nkb2Eg1JoBTWzAk7-eDbW6HWpYBMPzS3g35VafURE",
 							"type": "text"
 						}
 					]
@@ -96,10 +96,16 @@
 			"name": "Insert User",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "5473b776-9073-4866-928e-cd17659cde0f",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Sara Santos\",\n    \"email\": \"s@s.com\",\n    \"password\": \"123456\",\n    \"groupName\": \"API_BANK_SLIP\"\n}",
+					"raw": "{\n    \"name\": \"Sara Santos 2\",\n    \"email\": \"s@s2.com\",\n    \"password\": \"123456\",\n    \"groupName\": \"API_BANK_SLIP\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -123,10 +129,16 @@
 			"name": "Insert Client",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "5473b776-9073-4866-928e-cd17659cde0f",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"mail\": \"r@r.com\",\n    \"name\": \"home\",\n    \"secret\": \"123456\",\n    \"scope\": \"READ\",\n    \"duration\": 30\n}",
+					"raw": "{\n    \"mail\": \"r@r2.com\",\n    \"name\": \"home2\",\n    \"secret\": \"123456\",\n    \"scope\": \"READ\",\n    \"duration\": 30\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -153,6 +165,11 @@
 					"type": "oauth2",
 					"oauth2": [
 						{
+							"key": "clientId",
+							"value": "r@r2.com",
+							"type": "string"
+						},
+						{
 							"key": "accessTokenUrl",
 							"value": "{{url}}/oauth2/token",
 							"type": "string"
@@ -165,11 +182,6 @@
 						{
 							"key": "clientSecret",
 							"value": "123456",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "r@r.com",
 							"type": "string"
 						},
 						{
