@@ -26,7 +26,7 @@ public class User extends BaseEntity {
 	private String password;
 	
 	@CreationTimestamp
-	@Column
+	@Column(name = "date_registration")
 	private OffsetDateTime dateRegistration;
 	
 	@ManyToMany(fetch = FetchType.EAGER)

@@ -1,8 +1,12 @@
 package com.security.DTO;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class CustomerRequestDTO {
 
 	private String mail;

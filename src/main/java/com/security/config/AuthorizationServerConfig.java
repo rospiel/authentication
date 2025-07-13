@@ -1,13 +1,11 @@
 package com.security.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import com.security.authorizationserver.AuthSecurityProperties;
 import com.security.authorizationserver.JwtKeyStoreProperties;
-import com.security.authorizationserver.LongMixIn;
 import com.security.entity.Group;
 import com.security.entity.Permission;
 import com.security.repository.UserRepository;
@@ -27,8 +25,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.jackson2.CoreJackson2Module;
-import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
@@ -36,7 +32,6 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
-import org.springframework.security.oauth2.server.authorization.jackson2.OAuth2AuthorizationServerJackson2Module;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.token.JwtEncodingContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
@@ -83,12 +78,10 @@ public class AuthorizationServerConfig {
 
     @Bean
     public OAuth2AuthorizationService auth2AuthorizationService(JdbcOperations jdbcOperations,
-                                                                RegisteredClientRepository registeredClientRepository,
-                                                                ObjectMapper objectMapper) {
+                                                                RegisteredClientRepository registeredClientRepository) {
         JdbcOAuth2AuthorizationService oAuth2AuthorizationService = new JdbcOAuth2AuthorizationService(jdbcOperations, registeredClientRepository);
         JdbcOAuth2AuthorizationService.OAuth2AuthorizationRowMapper rowMapper = new JdbcOAuth2AuthorizationService.OAuth2AuthorizationRowMapper(registeredClientRepository);
 
-        rowMapper.setObjectMapper(objectMapper);
         oAuth2AuthorizationService.setAuthorizationRowMapper(rowMapper);
         return oAuth2AuthorizationService;
     }
@@ -143,7 +136,7 @@ public class AuthorizationServerConfig {
                                                                          .map(String::toString)
                                                                          .collect(Collectors.toList()));
                             }
-                            context.getClaims().claim("user_id", founded.getId());
+                            context.getClaims().claim("user_id", String.valueOf(founded.getId()));
                             context.getClaims().claim("user_fullname", founded.getName());
                             context.getClaims().claim("authorities", authorities);
                         }),
@@ -156,15 +149,5 @@ public class AuthorizationServerConfig {
             }
 
         });
-    }
-
-    @Bean
-    public ObjectMapper objectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModules(new CoreJackson2Module());
-        objectMapper.registerModules(SecurityJackson2Modules.getModules(JdbcOAuth2AuthorizationService.class.getClassLoader()));
-        objectMapper.registerModule(new OAuth2AuthorizationServerJackson2Module());
-        objectMapper.addMixIn(Long.class, LongMixIn.class);
-        return objectMapper;
     }
 }

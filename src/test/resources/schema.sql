@@ -1,4 +1,5 @@
-SET REFERENTIAL_INTEGRITY FALSE;
+SET @@foreign_key_checks = 0;
+--SET REFERENTIAL_INTEGRITY FALSE;
 
 DROP TABLE IF EXISTS `oauth2_registered_client`;
 
@@ -105,7 +106,7 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `dateRegistration` datetime NOT NULL,
+  `date_registration` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -149,4 +150,5 @@ ALTER TABLE `group_permission` ADD FOREIGN KEY (`group_id`) REFERENCES `group` (
 ALTER TABLE `group_permission` ADD FOREIGN KEY (`permission_id`) REFERENCES `permission` (`id`);
 
 
-SET REFERENTIAL_INTEGRITY TRUE;
+--SET REFERENTIAL_INTEGRITY TRUE;
+SET @@foreign_key_checks = 1;

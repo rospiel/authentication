@@ -6,7 +6,7 @@ spring:
     name: Authentication
 
   datasource:
-    url: jdbc:mysql://localhost:3306/auth?autoReconnect=true&createDatabaseIfNotExist=true
+    url: jdbc:mysql://${DATASOURCE_URL}:3306/auth?autoReconnect=true&createDatabaseIfNotExist=true
     username: root
     # SEARCH IN REPOSITORY ARTICLES FOR Auth-environment-vars
     password: ${DATASOURCE_PASSWORD}
@@ -17,6 +17,8 @@ spring:
 
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: none
     generate-ddl: true #to create tables
     properties:
       hibernate:
